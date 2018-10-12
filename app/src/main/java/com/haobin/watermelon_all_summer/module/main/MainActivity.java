@@ -21,8 +21,8 @@ import cn.droidlover.xdroidmvp.mvp.XActivity;
  */
 public class MainActivity extends XActivity {
 
-    @BindView(R.id.fl_title_menu)
-    FrameLayout flTitleMenu;
+//    @BindView(R.id.fl_title_menu)
+//    FrameLayout flTitleMenu;
     @BindView(R.id.toolbar_main)
     Toolbar toolbarMain;
     @BindView(R.id.vp_content)
@@ -61,7 +61,6 @@ public class MainActivity extends XActivity {
         if (actionBar != null) {
             //去除默认Title显示
             actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setDisplayShowHomeEnabled(false);
         }
     }
 
