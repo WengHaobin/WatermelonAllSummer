@@ -14,23 +14,6 @@
         app:theme="@style/ToolbarStyle"
         android:background="@color/colorPrimary">
 
-        <!--<FrameLayout-->
-            <!--android:id="@+id/fl_title_menu"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="?attr/selectableItemBackgroundBorderless"-->
-            <!--android:paddingLeft="15dp"-->
-            <!--android:paddingRight="15dp">-->
-
-            <!--<ImageView-->
-                <!--android:id="@+id/iv_title_menu"-->
-                <!--android:layout_width="23dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:contentDescription="@null"-->
-                <!--android:src="@drawable/titlebar_menu" />-->
-        <!--</FrameLayout>-->
-
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
