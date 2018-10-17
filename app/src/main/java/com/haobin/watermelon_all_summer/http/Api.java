@@ -11,16 +11,28 @@ import cn.droidlover.xdroidmvp.net.XApi;
  */
 
 public class Api {
-    private static NetService netService;
+    private static WanAndroidService wanAndroidService;
+    private static GankService gankService;
 
-    public static NetService getNetService() {
-        if (netService == null) {
+    public static WanAndroidService getWanAndroidService() {
+        if (wanAndroidService == null) {
             synchronized (Api.class) {
-                if (netService == null) {
-                    netService = XApi.getInstance().getRetrofit(Constants.API_GANK_BASE_URL, true).create(NetService.class);
+                if (wanAndroidService == null) {
+                    wanAndroidService = XApi.getInstance().getRetrofit(Constants.API_WAN_ANDROID, true).create(WanAndroidService.class);
                 }
             }
         }
-        return netService;
+        return wanAndroidService;
+    }
+
+    public static GankService getGankService() {
+        if (gankService == null) {
+            synchronized (Api.class) {
+                if (gankService == null) {
+                    gankService = XApi.getInstance().getRetrofit(Constants.API_GANK, true).create(GankService.class);
+                }
+            }
+        }
+        return gankService;
     }
 }

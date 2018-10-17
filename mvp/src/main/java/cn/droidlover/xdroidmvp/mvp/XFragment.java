@@ -117,7 +117,9 @@ public abstract class XFragment<P extends IPresent> extends RxFragment implement
             getP().detachV();
         }
         getvDelegate().destory();
-
+        if (unbinder != null){
+            unbinder.unbind();
+        }
         p = null;
         vDelegate = null;
     }

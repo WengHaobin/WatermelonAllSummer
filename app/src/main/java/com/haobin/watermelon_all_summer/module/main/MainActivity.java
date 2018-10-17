@@ -19,7 +19,6 @@ import com.haobin.watermelon_all_summer.module.welfare.WelfareFragment;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.droidlover.xdroidmvp.base.XFragmentAdapter;
 import cn.droidlover.xdroidmvp.mvp.XActivity;
@@ -117,6 +116,8 @@ public class MainActivity extends XActivity {
 
             }
         });
+
+        setCurrentItem(0);
     }
 
     private void setCurrentItem(int position) {

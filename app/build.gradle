@@ -22,6 +22,8 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife-apt"]
     implementation rootProject.ext.dependencies["avi-loading"]
     implementation rootProject.ext.dependencies["lottie"]
+    implementation rootProject.ext.dependencies["BaseAdapterHelper"]
+    implementation rootProject.ext.dependencies["EasyRefreshLayout"]
 
     //内存泄漏检测
     debugImplementation rootProject.ext.dependencies["canary-debug"]

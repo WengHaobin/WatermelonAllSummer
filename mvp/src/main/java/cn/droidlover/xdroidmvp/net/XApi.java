@@ -202,12 +202,8 @@ public class XApi {
                     @Override
                     public Publisher<T> apply(T model) throws Exception {
 
-                        if (model == null || model.isNull()) {
+                        if (model == null) {
                             return Flowable.error(new NetError(model.getErrorMsg(), NetError.NoDataError));
-                        } else if (model.isAuthError()) {
-                            return Flowable.error(new NetError(model.getErrorMsg(), NetError.AuthError));
-                        } else if (model.isBizError()) {
-                            return Flowable.error(new NetError(model.getErrorMsg(), NetError.BusinessError));
                         } else {
                             return Flowable.just(model);
                         }
