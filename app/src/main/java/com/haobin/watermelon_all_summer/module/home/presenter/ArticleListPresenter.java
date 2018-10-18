@@ -3,7 +3,7 @@ package com.haobin.watermelon_all_summer.module.home.presenter;
 import com.haobin.watermelon_all_summer.http.Api;
 import com.haobin.watermelon_all_summer.model.Article;
 import com.haobin.watermelon_all_summer.model.WanHttpResult;
-import com.haobin.watermelon_all_summer.module.home.view.ArticleFragment;
+import com.haobin.watermelon_all_summer.module.home.view.ArticleListActivity;
 import com.haobin.watermelon_all_summer.utils.ToastUtils;
 
 import cn.droidlover.xdroidmvp.mvp.XPresent;
@@ -16,10 +16,10 @@ import cn.droidlover.xdroidmvp.net.XApi;
  * on 2018/10/16
  * for
  */
-public class ArticlePresenter extends XPresent<ArticleFragment> {
+public class ArticleListPresenter extends XPresent<ArticleListActivity> {
 
-    public void loadData(final int page){
-        Api.getWanAndroidService().getArticleList(page)
+    public void loadData(final int page, int cid){
+        Api.getWanAndroidService().getProjectList(page, cid)
                 .compose(XApi.<WanHttpResult<Article>>getApiTransformer())
                 .compose(XApi.<WanHttpResult<Article>> getScheduler())
                 .compose(getV().<WanHttpResult<Article>> bindToLifecycle())
@@ -27,9 +27,9 @@ public class ArticlePresenter extends XPresent<ArticleFragment> {
                     @Override
                     protected void onFail(NetError error) {
                         if (page == 0){
-                            getV().erlArticle.refreshComplete();
+                            getV().erlArticleList.refreshComplete();
                         }else {
-                            getV().erlArticle.loadMoreComplete();
+                            getV().erlArticleList.loadMoreComplete();
                         }
                         ToastUtils.showToast("服务器出错，请稍后再试");
                     }
@@ -39,9 +39,9 @@ public class ArticlePresenter extends XPresent<ArticleFragment> {
                             getV().setData(result.getData());
                         }else {
                             if (page == 0){
-                                getV().erlArticle.refreshComplete();
+                                getV().erlArticleList.refreshComplete();
                             }else {
-                                getV().erlArticle.loadMoreComplete();
+                                getV().erlArticleList.loadMoreComplete();
                             }
                             ToastUtils.showToast(result.getErrorMsg());
                         }

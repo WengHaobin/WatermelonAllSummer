@@ -24,6 +24,8 @@ dependencies {
     implementation rootProject.ext.dependencies["lottie"]
     implementation rootProject.ext.dependencies["BaseAdapterHelper"]
     implementation rootProject.ext.dependencies["EasyRefreshLayout"]
+    implementation rootProject.ext.dependencies["flowlayout"]
+    implementation rootProject.ext.dependencies["agentweb"]
 
     //内存泄漏检测
     debugImplementation rootProject.ext.dependencies["canary-debug"]

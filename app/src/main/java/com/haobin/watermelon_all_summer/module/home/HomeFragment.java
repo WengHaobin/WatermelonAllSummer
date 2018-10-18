@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.haobin.watermelon_all_summer.R;
-import com.haobin.watermelon_all_summer.module.home.view.ArticleFragment;
-import com.haobin.watermelon_all_summer.module.home.view.ProjectFragment;
+import com.haobin.watermelon_all_summer.module.home.view.ArticleTagFragment;
+import com.haobin.watermelon_all_summer.module.home.view.NewestArticleFragment;
 
 import java.util.ArrayList;
 
@@ -39,12 +39,12 @@ public class HomeFragment extends XFragment {
 
     private void initFragments() {
         ArrayList<Fragment> mFragmentList = new ArrayList<>();
-        mFragmentList.add(new ArticleFragment());
-        mFragmentList.add(new ProjectFragment());
+        mFragmentList.add(new NewestArticleFragment());
+        mFragmentList.add(new ArticleTagFragment());
 
         String[] strings = new String[2];
-        strings[0] = "文章";
-        strings[1] = "项目";
+        strings[0] = "最新文章";
+        strings[1] = "分类文章";
         XFragmentAdapter xFragmentAdapter = new XFragmentAdapter(getChildFragmentManager(), mFragmentList, strings);
         vpHome.setAdapter(xFragmentAdapter);
         vpHome.setOffscreenPageLimit(2);

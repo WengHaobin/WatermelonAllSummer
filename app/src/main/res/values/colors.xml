@@ -22,4 +22,7 @@
     <color name="colorPageBg">#F1F3F4</color>
     <!--首页item文字颜色-->
     <color name="colorSubtitle">#999</color>
+
+    <color name="color_45c1b5">#45c1b5</color>
+    <color name="color_049486">#049486</color>
 </resources>
