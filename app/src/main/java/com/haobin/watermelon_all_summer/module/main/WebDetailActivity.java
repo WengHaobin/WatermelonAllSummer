@@ -1,4 +1,4 @@
-package com.haobin.watermelon_all_summer.module.home.view;
+package com.haobin.watermelon_all_summer.module.main;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -21,23 +21,23 @@ import cn.droidlover.xdroidmvp.mvp.XActivity;
 /**
  * Created by Wenghaobin
  * on 2018/10/18
- * for 文章详情
+ * for 网络页面详情
  */
-public class ArticleDetailActivity extends XActivity {
+public class WebDetailActivity extends XActivity {
 
-    @BindView(R.id.tb_article_detail)
-    Toolbar tbArticleDetail;
-    @BindView(R.id.fl_article_detail)
-    FrameLayout flArticleDetail;
+    @BindView(R.id.tb_web)
+    Toolbar tbWeb;
+    @BindView(R.id.fl_web)
+    FrameLayout flWeb;
 
     private AgentWeb mAgentWeb;
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        String url = getIntent().getStringExtra(Constants.WAN_ANDROID_URL);
-        tbArticleDetail.setTitle(getIntent().getStringExtra(Constants.WAN_ANDROID_NAME));
-        setSupportActionBar(tbArticleDetail);
-        tbArticleDetail.setNavigationOnClickListener(new View.OnClickListener() {
+        String url = getIntent().getStringExtra(Constants.WEB_URL);
+        tbWeb.setTitle(getIntent().getStringExtra(Constants.WEB_NAME));
+        setSupportActionBar(tbWeb);
+        tbWeb.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -50,7 +50,7 @@ public class ArticleDetailActivity extends XActivity {
     @SuppressLint("SetJavaScriptEnabled")
     private void setWebView(String url) {
         mAgentWeb = AgentWeb.with(this)
-                .setAgentWebParent(flArticleDetail, new LinearLayout.LayoutParams(-1, -1))
+                .setAgentWebParent(flWeb, new LinearLayout.LayoutParams(-1, -1))
                 .useDefaultIndicator(ContextCompat.getColor(context,R.color.colorPrimary))
                 .setMainFrameErrorView(R.layout.webview_error_view, -1)
                 .createAgentWeb()
@@ -82,7 +82,7 @@ public class ArticleDetailActivity extends XActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_article_detail;
+        return R.layout.activity_web_detail;
     }
 
     @Override

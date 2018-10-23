@@ -13,6 +13,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.haobin.watermelon_all_summer.R;
 import com.haobin.watermelon_all_summer.app.Constants;
 import com.haobin.watermelon_all_summer.model.Article;
+import com.haobin.watermelon_all_summer.module.main.WebDetailActivity;
 import com.haobin.watermelon_all_summer.module.home.adapter.ArticleAdapter;
 import com.haobin.watermelon_all_summer.module.home.presenter.ArticleListPresenter;
 
@@ -95,9 +96,9 @@ public class ArticleListActivity extends XActivity<ArticleListPresenter> {
         articleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Router.newIntent(context).to(ArticleDetailActivity.class)
-                        .putString(Constants.WAN_ANDROID_URL, datas.get(position).getLink())
-                        .putString(Constants.WAN_ANDROID_NAME, datas.get(position).getTitle())
+                Router.newIntent(context).to(WebDetailActivity.class)
+                        .putString(Constants.WEB_URL, datas.get(position).getLink())
+                        .putString(Constants.WEB_NAME, datas.get(position).getTitle())
                         .launch();
             }
         });

@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".module.main.MainActivity"/>
         <activity android:name=".module.home.view.ArticleListActivity"/>
-        <activity android:name=".module.home.view.ArticleDetailActivity"/>
+        <activity android:name=".module.main.WebDetailActivity"/>
     </application>
 
 </manifest>

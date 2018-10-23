@@ -1,4 +1,4 @@
-package com.haobin.watermelon_all_summer.module.home.view;
+package com.haobin.watermelon_all_summer.module.welfare.view;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,10 +11,10 @@ import com.ajguan.library.view.SimpleRefreshHeaderView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.haobin.watermelon_all_summer.R;
 import com.haobin.watermelon_all_summer.app.Constants;
-import com.haobin.watermelon_all_summer.model.Article;
+import com.haobin.watermelon_all_summer.model.GankHttpResult;
 import com.haobin.watermelon_all_summer.module.main.WebDetailActivity;
-import com.haobin.watermelon_all_summer.module.home.adapter.ArticleAdapter;
-import com.haobin.watermelon_all_summer.module.home.presenter.NewestArticlePresenter;
+import com.haobin.watermelon_all_summer.module.welfare.adapter.VideoListAdapter;
+import com.haobin.watermelon_all_summer.module.welfare.presenter.VideoListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,34 +25,34 @@ import cn.droidlover.xdroidmvp.router.Router;
 
 /**
  * Created by Wenghaobin
- * on 2018/10/16
- * for 文章
+ * on 2018/10/23
+ * for 休息视频列表
  */
-public class NewestArticleFragment extends XFragment<NewestArticlePresenter> {
+public class VideoListFragment extends XFragment<VideoListPresenter> {
 
-    @BindView(R.id.rv_article)
-    RecyclerView rvArticle;
-    @BindView(R.id.erl_article)
-    public EasyRefreshLayout erlArticle;
+    @BindView(R.id.rv_video_list)
+    RecyclerView rvVideoList;
+    @BindView(R.id.erl_video_list)
+    public EasyRefreshLayout erlVideoList;
 
-    private ArticleAdapter articleAdapter;
-    private List<Article.DatasBean> datas = new ArrayList<>();
+    private VideoListAdapter videoListAdapter;
+    private List<GankHttpResult.ResultsBean> datas = new ArrayList<>();
 
     public int page = 0;
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        erlArticle.autoRefresh();
-        erlArticle.setRefreshHeadView(new SimpleRefreshHeaderView(context));
-        erlArticle.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
+        erlVideoList.autoRefresh();
+        erlVideoList.setRefreshHeadView(new SimpleRefreshHeaderView(context));
+        erlVideoList.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
             @Override
             public void onLoadMore() {
                 getP().loadData(page);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (erlArticle != null) {
-                            erlArticle.closeLoadView();
+                        if (erlVideoList != null) {
+                            erlVideoList.closeLoadView();
                         }
                     }
                 }, 1000);
@@ -65,23 +65,23 @@ public class NewestArticleFragment extends XFragment<NewestArticlePresenter> {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (erlArticle != null) {
-                            erlArticle.refreshComplete();
+                        if (erlVideoList != null) {
+                            erlVideoList.refreshComplete();
                         }
                     }
                 }, 1000);
             }
         });
 
-        rvArticle.setLayoutManager(new LinearLayoutManager(context));
-        articleAdapter = new ArticleAdapter(datas);
-        rvArticle.setAdapter(articleAdapter);
-        articleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+        rvVideoList.setLayoutManager(new LinearLayoutManager(context));
+        videoListAdapter = new VideoListAdapter(datas);
+        rvVideoList.setAdapter(videoListAdapter);
+        videoListAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Router.newIntent(context).to(WebDetailActivity.class)
-                        .putString(Constants.WEB_URL, datas.get(position).getLink())
-                        .putString(Constants.WEB_NAME, datas.get(position).getTitle())
+                        .putString(Constants.WEB_NAME, datas.get(position).getDesc())
+                        .putString(Constants.WEB_URL, datas.get(position).getUrl())
                         .launch();
             }
         });
@@ -89,17 +89,17 @@ public class NewestArticleFragment extends XFragment<NewestArticlePresenter> {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_article;
+        return R.layout.fragment_video_list;
     }
 
     @Override
-    public NewestArticlePresenter newP() {
-        return new NewestArticlePresenter();
+    public VideoListPresenter newP() {
+        return new VideoListPresenter();
     }
 
-    public void setData(Article article) {
-        datas.addAll(article.getDatas());
-        articleAdapter.notifyDataSetChanged();
+    public void setData(GankHttpResult result){
+        datas.addAll(result.getResults());
+        videoListAdapter.notifyDataSetChanged();
 
         page ++;
     }

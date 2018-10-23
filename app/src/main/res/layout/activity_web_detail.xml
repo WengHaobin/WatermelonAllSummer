@@ -6,7 +6,7 @@
               android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_article_detail"
+        android:id="@+id/tb_web"
         android:layout_width="match_parent"
         style="@style/ToolbarStyle"
         android:background="@color/colorPrimary"
@@ -14,7 +14,7 @@
         android:layout_height="?attr/actionBarSize"/>
 
     <FrameLayout
-        android:id="@+id/fl_article_detail"
+        android:id="@+id/fl_web"
         android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

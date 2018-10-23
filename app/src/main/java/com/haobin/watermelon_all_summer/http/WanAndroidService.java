@@ -38,4 +38,5 @@ public interface WanAndroidService {
     @GET("article/list/{page}/json")
     Flowable<WanHttpResult<Article>> getProjectList(@Path("page") int page,
                                                     @Query("cid") int cid);
+
 }
