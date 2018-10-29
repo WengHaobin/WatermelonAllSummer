@@ -31,6 +31,8 @@ dependencies {
     debugImplementation rootProject.ext.dependencies["canary-debug"]
     releaseImplementation rootProject.ext.dependencies["canary-release"]
     debugImplementation rootProject.ext.dependencies["canary-fragment"]
+
+    implementation rootProject.ext.dependencies["cardview-v7"]
     
     implementation project(":mvp")
 }

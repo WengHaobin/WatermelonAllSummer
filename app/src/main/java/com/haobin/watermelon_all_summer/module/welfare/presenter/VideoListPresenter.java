@@ -16,6 +16,7 @@ import cn.droidlover.xdroidmvp.net.XApi;
  * for
  */
 public class VideoListPresenter extends XPresent<VideoListFragment> {
+
     public void loadData(final int page){
         Api.getGankService().getVideoList(page)
                 .compose(XApi.<GankHttpResult>getApiTransformer())

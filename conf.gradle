@@ -20,7 +20,7 @@ ext {
             "design"                     : "com.android.support:design:${android["VSupportSdk"]}",
             "annotations"                : "com.android.support:support-annotations:${android["VSupportSdk"]}",
             "recyclerview-v7"            : "com.android.support:recyclerview-v7:${android["VSupportSdk"]}",
-            "constraint-layout"          : "com.android.support.constraint:constraint-layout:1.0.2",
+            "cardview-v7"                : "com.android.support:cardview-v7:${android["VSupportSdk"]}",
 
             "butterknife"                : "com.jakewharton:butterknife:8.8.1",
             "butterknife-apt"            : "com.jakewharton:butterknife-compiler:8.8.1",
