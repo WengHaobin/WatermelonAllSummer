@@ -2,6 +2,7 @@ package com.haobin.watermelon_all_summer.http;
 
 import com.haobin.watermelon_all_summer.model.Article;
 import com.haobin.watermelon_all_summer.model.ArticleTag;
+import com.haobin.watermelon_all_summer.model.Tree;
 import com.haobin.watermelon_all_summer.model.WanHttpResult;
 
 import java.util.List;
@@ -38,5 +39,11 @@ public interface WanAndroidService {
     @GET("article/list/{page}/json")
     Flowable<WanHttpResult<Article>> getProjectList(@Path("page") int page,
                                                     @Query("cid") int cid);
+
+    /**
+     * 玩安卓，体系数据列表
+     */
+    @GET("tree/json")
+    Flowable<WanHttpResult<List<Tree>>> getTreeList();
 
 }

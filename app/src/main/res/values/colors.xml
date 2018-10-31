@@ -25,4 +25,14 @@
 
     <color name="color_45c1b5">#45c1b5</color>
     <color name="color_049486">#049486</color>
+
+    <!--分割线-->
+    <color name="colorLine">#EBEBEB</color>
+
+    <!--侧边栏分割线-->
+    <color name="colorNavigationLine">#E0E0E0</color>
+    <!--导航数据侧边栏背景色-->
+    <color name="colorNavigationBg">#80ffffff</color>
+    <!--首页分割线-->
+    <color name="colorHomeLine">#D4D4D4</color>
 </resources>

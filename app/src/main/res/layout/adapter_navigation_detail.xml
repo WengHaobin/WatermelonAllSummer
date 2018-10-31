@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_navigation_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_navigation_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLine"
+        android:paddingStart="12dp"
+        android:paddingEnd="0dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textSize="14sp"
+        tools:text="网址导航"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_navigation_detail_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
