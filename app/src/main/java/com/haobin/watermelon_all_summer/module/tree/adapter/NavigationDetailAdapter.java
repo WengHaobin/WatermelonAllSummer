@@ -2,6 +2,7 @@ package com.haobin.watermelon_all_summer.module.tree.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -19,10 +20,12 @@ import java.util.List;
 public class NavigationDetailAdapter extends BaseQuickAdapter<Tree, BaseViewHolder> {
 
     private Context context;
+    private RecyclerView recyclerView;
 
-    public NavigationDetailAdapter(Context mContext, List<Tree> data) {
+    public NavigationDetailAdapter(Context mContext, List<Tree> data, RecyclerView mRecyclerView) {
         super(R.layout.adapter_navigation_detail,data);
         context = mContext;
+        recyclerView = mRecyclerView;
     }
 
     @Override
@@ -34,4 +37,15 @@ public class NavigationDetailAdapter extends BaseQuickAdapter<Tree, BaseViewHold
         NavigationDetailContentAdapter navigationDetailContentAdapter = new NavigationDetailContentAdapter(item.getChildren());
         rvNavigationDetailContent.setAdapter(navigationDetailContentAdapter);
     }
+
+    /**
+     * 获取被选中的位置，将选中项移动到顶部，并刷新
+     */
+    public void getSelectedPosition(int selectedPosition) {
+        //调用移动位置的方法,直接移动到顶部第一个位置
+        ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(selectedPosition,0);
+        //刷新
+        notifyDataSetChanged();
+    }
+
 }

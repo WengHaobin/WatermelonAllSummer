@@ -32,8 +32,6 @@ public class TreeFragment extends XFragment<TreePresenter>{
     private NavigationDetailAdapter navigationDetailAdapter;
     private List<Tree> trees = new ArrayList<>();
 
-    private int oldPosition = 0;
-
     @Override
     public int getLayoutId() {
         return R.layout.fragment_tree;
@@ -51,24 +49,19 @@ public class TreeFragment extends XFragment<TreePresenter>{
 
     @Override
     public void bindEvent() {
-        LinearLayoutManager lmNavigation = new LinearLayoutManager(context);
-        rvNavigation.setLayoutManager(lmNavigation);
-        navigationAdapter = new NavigationAdapter(trees);
+        rvNavigation.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        navigationAdapter = new NavigationAdapter(trees, rvNavigation);
         rvNavigation.setAdapter(navigationAdapter);
 
-        final LinearLayoutManager lmNavigationDetail = new LinearLayoutManager(context);
-        rvNavigationDetail.setLayoutManager(lmNavigationDetail);
-        navigationDetailAdapter = new NavigationDetailAdapter(context, trees);
+        rvNavigationDetail.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+        navigationDetailAdapter = new NavigationDetailAdapter(context, trees, rvNavigationDetail);
         rvNavigationDetail.setAdapter(navigationDetailAdapter);
 
         navigationAdapter.setOnSelectListener(new NavigationAdapter.OnSelectListener() {
             @Override
             public void onSelected(int position) {
-                if (position <= oldPosition) {
-                    rvNavigationDetail.smoothScrollToPosition(position);
-                } else {
-                    lmNavigationDetail.scrollToPositionWithOffset(position, 0);
-                }
+                navigationAdapter.getSelectedPosition(position);
+                navigationDetailAdapter.getSelectedPosition(position);
             }
         });
 
@@ -76,13 +69,10 @@ public class TreeFragment extends XFragment<TreePresenter>{
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                int currentPosition = lmNavigationDetail.findFirstVisibleItemPosition();
-                //TODO item错位
-                if (oldPosition != currentPosition) {
-                    rvNavigation.smoothScrollToPosition(currentPosition);
-                    navigationAdapter.setSelected(currentPosition);
-                    oldPosition = currentPosition;
-                }
+                //获取右侧列表的第一个可见Item的position
+                int TopPosition = ((LinearLayoutManager) rvNavigationDetail.getLayoutManager()).findFirstVisibleItemPosition();
+                //左侧得到这个position
+                navigationAdapter.getSelectedPosition(TopPosition);
             }
         });
     }
