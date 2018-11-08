@@ -1,6 +1,6 @@
 package com.haobin.watermelon_all_summer.module.tree.adapter;
 
-import android.content.Context;
+import android.app.Activity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class NavigationDetailAdapter extends BaseQuickAdapter<Tree, BaseViewHolder> {
 
-    private Context context;
+    private Activity context;
     private RecyclerView recyclerView;
 
-    public NavigationDetailAdapter(Context mContext, List<Tree> data, RecyclerView mRecyclerView) {
-        super(R.layout.adapter_navigation_detail,data);
+    public NavigationDetailAdapter(Activity mContext, List<Tree> data, RecyclerView mRecyclerView) {
+        super(R.layout.adapter_navigation_detail, data);
         context = mContext;
         recyclerView = mRecyclerView;
     }
@@ -33,8 +33,8 @@ public class NavigationDetailAdapter extends BaseQuickAdapter<Tree, BaseViewHold
         helper.setText(R.id.tv_navigation_detail_title, item.getName());
 
         RecyclerView rvNavigationDetailContent = helper.getView(R.id.rv_navigation_detail_content);
-        rvNavigationDetailContent.setLayoutManager(new GridLayoutManager(context,2));
-        NavigationDetailContentAdapter navigationDetailContentAdapter = new NavigationDetailContentAdapter(item.getChildren());
+        rvNavigationDetailContent.setLayoutManager(new GridLayoutManager(context, 2));
+        NavigationDetailContentAdapter navigationDetailContentAdapter = new NavigationDetailContentAdapter(context, item.getChildren());
         rvNavigationDetailContent.setAdapter(navigationDetailContentAdapter);
     }
 
@@ -43,7 +43,7 @@ public class NavigationDetailAdapter extends BaseQuickAdapter<Tree, BaseViewHold
      */
     public void getSelectedPosition(int selectedPosition) {
         //调用移动位置的方法,直接移动到顶部第一个位置
-        ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(selectedPosition,0);
+        ((LinearLayoutManager) recyclerView.getLayoutManager()).scrollToPositionWithOffset(selectedPosition, 0);
         //刷新
         notifyDataSetChanged();
     }
