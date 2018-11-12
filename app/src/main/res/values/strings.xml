@@ -7,4 +7,9 @@
     <string name="error_tips">不妙！加载失败了ヽ(≧Д≦)ノ\n 告诉大佬一些可能的原因：\n1.不可直视的网络环境\n 2.服务器大哥的不定期抽风\n 3.WanAndroid眼冒金星拒绝服务喔~</string>
 
     <string name="reload">Reload</string>
+
+    <string name="setting">设置</string>
+    <string name="about">关于</string>
+    <string name="clean_cache">清除缓存</string>
+    <string name="night_mode">夜间模式</string>
 </resources>

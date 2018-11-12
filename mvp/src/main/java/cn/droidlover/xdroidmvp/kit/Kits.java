@@ -15,6 +15,7 @@ import android.text.TextUtils;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -807,6 +809,65 @@ public class Kits {
 
             java.io.File file = new java.io.File(path);
             return (file.exists() && file.isFile() ? file.length() : -1);
+        }
+
+       public static String getFolderSize(String path) {
+            if (TextUtils.isEmpty(path)) {
+                return "";
+            }
+
+            java.io.File file = new java.io.File(path);
+            return (file.exists() ? getFormatSize(getFolderSize(file)) : "");
+        }
+
+        public static long getFolderSize(java.io.File file) {
+            long size = 0;
+            try {
+                java.io.File[] fileList = file.listFiles();
+                for (java.io.File aFileList : fileList) {
+                    // 如果下面还有文件
+                    if (aFileList.isDirectory()) {
+                        size = size + getFolderSize(aFileList);
+                    } else {
+                        size = size + aFileList.length();
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return size;
+        }
+
+        public static String getFormatSize(long size) {
+            long kiloByte = size / 1024;
+            if (kiloByte < 1) {
+//            return size + "Byte";
+                return "0K";
+            }
+
+            long megaByte = kiloByte / 1024;
+            if (megaByte < 1) {
+                BigDecimal result1 = new BigDecimal(Double.toString(kiloByte));
+                return result1.setScale(2, BigDecimal.ROUND_HALF_UP)
+                        .toPlainString() + "KB";
+            }
+
+            long gigaByte = megaByte / 1024;
+            if (gigaByte < 1) {
+                BigDecimal result2 = new BigDecimal(Double.toString(megaByte));
+                return result2.setScale(2, BigDecimal.ROUND_HALF_UP)
+                        .toPlainString() + "MB";
+            }
+
+            long teraBytes = gigaByte / 1024;
+            if (teraBytes < 1) {
+                BigDecimal result3 = new BigDecimal(Double.toString(gigaByte));
+                return result3.setScale(2, BigDecimal.ROUND_HALF_UP)
+                        .toPlainString() + "GB";
+            }
+            BigDecimal result4 = new BigDecimal(teraBytes);
+            return result4.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString()
+                    + "TB";
         }
 
     }

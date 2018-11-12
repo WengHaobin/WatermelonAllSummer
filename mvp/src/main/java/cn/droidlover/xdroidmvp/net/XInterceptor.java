@@ -2,6 +2,7 @@ package cn.droidlover.xdroidmvp.net;
 
 import java.io.IOException;
 
+import cn.droidlover.xdroidmvp.kit.Kits;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;

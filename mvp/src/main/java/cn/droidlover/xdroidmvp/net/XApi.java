@@ -2,10 +2,12 @@ package cn.droidlover.xdroidmvp.net;
 
 import org.reactivestreams.Publisher;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import cn.droidlover.xdroidmvp.XDroidConf;
 import cn.droidlover.xdroidmvp.kit.Kits;
 import cn.droidlover.xdroidmvp.net.progress.ProgressHelper;
 import io.reactivex.Flowable;
@@ -13,6 +15,7 @@ import io.reactivex.FlowableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Cache;
 import okhttp3.CookieJar;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -141,6 +144,11 @@ public class XApi {
             LogInterceptor logInterceptor = new LogInterceptor();
             builder.addInterceptor(logInterceptor);
         }
+
+        //将网络请求数据缓存在文件，由于位置问题，暂时写死
+        File cacheFile = new File("storage/emulated/0/Android/data/com.haobin.watermelon_all_summer/cache/netCache");
+        Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
+        builder.cache(cache);
 
         OkHttpClient client = builder.build();
         clientMap.put(baseUrl, client);

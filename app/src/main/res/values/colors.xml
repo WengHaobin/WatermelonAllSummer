@@ -35,4 +35,11 @@
     <color name="colorNavigationBg">#80ffffff</color>
     <!--首页分割线-->
     <color name="colorHomeLine">#D4D4D4</color>
+
+    <!--设置页分割线-->
+    <color name="colorSettingLine">#dddddd</color>
+    <!--设置页卡片背景-->
+    <color name="color_setting_card_bg">#fffff9</color>
+    <!--设置页文字颜色-->
+    <color name="setting_text">#5b5d5c</color>
 </resources>

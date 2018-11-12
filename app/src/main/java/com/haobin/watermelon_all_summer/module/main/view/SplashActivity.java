@@ -1,8 +1,7 @@
-package com.haobin.watermelon_all_summer.module.main;
+package com.haobin.watermelon_all_summer.module.main.view;
 
 import android.animation.Animator;
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.haobin.watermelon_all_summer.R;

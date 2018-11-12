@@ -3,7 +3,6 @@ package com.haobin.watermelon_all_summer.module.welfare.view;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -13,11 +12,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.haobin.watermelon_all_summer.R;
 import com.haobin.watermelon_all_summer.app.Constants;
 import com.haobin.watermelon_all_summer.model.GankHttpResult;
-import com.haobin.watermelon_all_summer.module.main.WebDetailActivity;
+import com.haobin.watermelon_all_summer.module.main.view.WebDetailActivity;
 import com.haobin.watermelon_all_summer.module.welfare.adapter.PhotoListAdapter;
-import com.haobin.watermelon_all_summer.module.welfare.adapter.VideoListAdapter;
 import com.haobin.watermelon_all_summer.module.welfare.presenter.PhotoListPresenter;
-import com.haobin.watermelon_all_summer.module.welfare.presenter.VideoListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +41,7 @@ public class PhotoListFragment extends XFragment<PhotoListPresenter> {
     public int page = 0;
 
     @Override
-    public void initData(Bundle savedInstanceState) {
+    public void bindEvent() {
         erlPhotoList.autoRefresh();
         erlPhotoList.setRefreshHeadView(new SimpleRefreshHeaderView(context));
         erlPhotoList.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
@@ -88,6 +85,11 @@ public class PhotoListFragment extends XFragment<PhotoListPresenter> {
                         .launch();
             }
         });
+    }
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        getP().loadData(0);
     }
 
     @Override

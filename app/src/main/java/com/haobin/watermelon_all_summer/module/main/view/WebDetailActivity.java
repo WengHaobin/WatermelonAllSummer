@@ -1,4 +1,4 @@
-package com.haobin.watermelon_all_summer.module.main;
+package com.haobin.watermelon_all_summer.module.main.view;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

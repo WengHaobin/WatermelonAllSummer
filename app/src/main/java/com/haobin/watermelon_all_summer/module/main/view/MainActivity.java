@@ -1,4 +1,4 @@
-package com.haobin.watermelon_all_summer.module.main;
+package com.haobin.watermelon_all_summer.module.main.view;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -8,10 +8,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.haobin.watermelon_all_summer.R;
+import com.haobin.watermelon_all_summer.app.Constants;
 import com.haobin.watermelon_all_summer.module.home.HomeFragment;
 import com.haobin.watermelon_all_summer.module.tree.TreeFragment;
 import com.haobin.watermelon_all_summer.module.welfare.WelfareFragment;
@@ -22,6 +24,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cn.droidlover.xdroidmvp.base.XFragmentAdapter;
 import cn.droidlover.xdroidmvp.mvp.XActivity;
+import cn.droidlover.xdroidmvp.router.Router;
 
 /**
  * Created by Wenghaobin
@@ -84,6 +87,38 @@ public class MainActivity extends XActivity {
                 this, dlMain, toolbarMain, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.syncState();
         dlMain.addDrawerListener(toggle);
+
+        nvMain.getMenu().findItem(R.id.nav_item_android)
+                .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        dlMain.closeDrawers();
+                        return true;
+                    }
+                });
+
+        nvMain.getMenu().findItem(R.id.nav_item_setting)
+                .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        dlMain.closeDrawers();
+                        Router.newIntent(context).to(SettingActivity.class).launch();
+                        return true;
+                    }
+                });
+
+        nvMain.getMenu().findItem(R.id.nav_item_about)
+                .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        dlMain.closeDrawers();
+                        Router.newIntent(context).to(WebDetailActivity.class)
+                                .putString(Constants.WEB_NAME, getString(R.string.about))
+                                .putString(Constants.WEB_URL, "https://github.com/WengHaobin/WatermelonAllSummer/blob/master/README.md")
+                                .launch();
+                        return true;
+                    }
+                });
     }
 
     private void initFragments() {
