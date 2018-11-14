@@ -1,6 +1,7 @@
 # WatermelonAllSummer
 
 [![Apache License 2.0][1]][2]
+![Release Version][3] 
 
 ## Introduce
 西瓜一夏：基于网易云音乐UI，使用Gank.io和玩安卓的api，采用的XdroidMvp框架快速开发的符合Material Design的Android客户端。
@@ -43,3 +44,4 @@ limitations under the License.
 
 [1]:https://img.shields.io/:license-apache-blue.svg
 [2]:https://www.apache.org/licenses/LICENSE-2.0.html
+[3]:https://img.shields.io/badge/release-1.0-red.svg
