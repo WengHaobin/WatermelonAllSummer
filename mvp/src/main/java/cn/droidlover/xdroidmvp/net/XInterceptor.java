@@ -31,7 +31,6 @@ public class XInterceptor implements Interceptor {
             if (tmp != null) {
                 return tmp;
             }
-
         }
         return response;
     }

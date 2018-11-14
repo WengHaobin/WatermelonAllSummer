@@ -145,8 +145,8 @@ public class XApi {
             builder.addInterceptor(logInterceptor);
         }
 
-        //将网络请求数据缓存在文件，由于位置问题，暂时写死
-        File cacheFile = new File("storage/emulated/0/Android/data/com.haobin.watermelon_all_summer/cache/netCache");
+        //将网络请求数据缓存在文件
+        File cacheFile = new File(XDroidConf.CACHE_NET_DIR);
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
         builder.cache(cache);
 

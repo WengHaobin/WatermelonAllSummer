@@ -1,18 +1,15 @@
-package com.haobin.watermelon_all_summer.module.main.view;
+package com.haobin.watermelon_all_summer.module.main;
 
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
 import com.haobin.watermelon_all_summer.R;
 import com.haobin.watermelon_all_summer.app.Constants;
-import com.haobin.watermelon_all_summer.module.main.presenter.SettingPresenter;
 import com.haobin.watermelon_all_summer.utils.ToastUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.droidlover.xdroidmvp.kit.Kits;
 import cn.droidlover.xdroidmvp.log.XLog;
@@ -23,14 +20,12 @@ import cn.droidlover.xdroidmvp.mvp.XActivity;
  * on 2018/11/12
  * for 设置页
  */
-public class SettingActivity extends XActivity<SettingPresenter> {
+public class SettingActivity extends XActivity{
 
     private static final String TAG = "SettingActivity";
 
     @BindView(R.id.tb_setting)
     Toolbar tbSetting;
-    @BindView(R.id.cb_setting_cache)
-    AppCompatCheckBox cbSettingCache;
     @BindView(R.id.tv_setting_clear)
     TextView tvSettingClear;
 
@@ -65,7 +60,7 @@ public class SettingActivity extends XActivity<SettingPresenter> {
     }
 
     @Override
-    public SettingPresenter newP() {
-        return new SettingPresenter();
+    public Object newP() {
+        return null;
     }
 }

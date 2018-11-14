@@ -16,6 +16,7 @@ public class XDroidConf {
     // #cache
     public static String CACHE_SP_NAME = "config";
     public static String CACHE_DISK_DIR = "cache";
+    public static String CACHE_NET_DIR = "storage/emulated/0/Android/data/com.haobin.watermelon_all_summer/cache/netCache";
 
     // #router
     public static int ROUTER_ANIM_ENTER = Router.RES_NONE;

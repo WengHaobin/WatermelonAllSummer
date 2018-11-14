@@ -12,7 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.haobin.watermelon_all_summer.R;
 import com.haobin.watermelon_all_summer.app.Constants;
 import com.haobin.watermelon_all_summer.model.GankHttpResult;
-import com.haobin.watermelon_all_summer.module.main.view.WebDetailActivity;
+import com.haobin.watermelon_all_summer.module.main.WebDetailActivity;
 import com.haobin.watermelon_all_summer.module.welfare.adapter.VideoListAdapter;
 import com.haobin.watermelon_all_summer.module.welfare.presenter.VideoListPresenter;
 

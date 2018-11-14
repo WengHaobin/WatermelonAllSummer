@@ -12,7 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.haobin.watermelon_all_summer.R;
 import com.haobin.watermelon_all_summer.app.Constants;
 import com.haobin.watermelon_all_summer.model.Article;
-import com.haobin.watermelon_all_summer.module.main.view.WebDetailActivity;
+import com.haobin.watermelon_all_summer.module.main.WebDetailActivity;
 import com.haobin.watermelon_all_summer.module.home.adapter.ArticleAdapter;
 import com.haobin.watermelon_all_summer.module.home.presenter.NewestArticlePresenter;
 

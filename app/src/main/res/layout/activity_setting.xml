@@ -30,7 +30,9 @@
             android:background="@color/color_setting_card_bg"
             android:orientation="vertical">
 
+            <!-- 夜间模式暂时不实现 -->
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/setting_night_nod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -17,4 +17,8 @@ public class Constants {
     public static final String WEB_URL = "WEB_URL";
 
     public static final String CACHE_PATH = "storage/emulated/0/Android/data/com.haobin.watermelon_all_summer/cache/netCache";
+
+    public static final String SP = "SP";
+
+    public static final String NIGHT_MODE_STATE = "NIGHT_MODE_STATE";
 }

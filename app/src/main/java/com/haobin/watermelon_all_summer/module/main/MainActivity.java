@@ -1,4 +1,4 @@
-package com.haobin.watermelon_all_summer.module.main.view;
+package com.haobin.watermelon_all_summer.module.main;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -32,6 +32,8 @@ import cn.droidlover.xdroidmvp.router.Router;
  * for 首页
  */
 public class MainActivity extends XActivity {
+
+    private static final String TAG = "MainActivity";
 
     @BindView(R.id.toolbar_main)
     Toolbar toolbarMain;

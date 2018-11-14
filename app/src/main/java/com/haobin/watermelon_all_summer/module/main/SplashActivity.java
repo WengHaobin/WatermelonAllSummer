@@ -1,4 +1,4 @@
-package com.haobin.watermelon_all_summer.module.main.view;
+package com.haobin.watermelon_all_summer.module.main;
 
 import android.animation.Animator;
 import android.os.Bundle;
