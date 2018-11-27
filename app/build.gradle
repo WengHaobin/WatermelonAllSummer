@@ -35,4 +35,6 @@ dependencies {
     implementation rootProject.ext.dependencies["cardview-v7"]
     
     implementation project(":mvp")
+
+    api 'com.github.adonggit:CasePackage:1.73'
 }

@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 
 import com.haobin.watermelon_all_summer.http.NetProviderImpl;
+import com.lsh.packagelibrary.CasePackageApp;
 import com.squareup.leakcanary.LeakCanary;
 
 import cn.droidlover.xdroidmvp.imageloader.ILFactory;
@@ -15,7 +16,7 @@ import cn.droidlover.xdroidmvp.net.XApi;
  * on 2018/10/9
  * 全局Application
  */
-public class App extends Application {
+public class App extends CasePackageApp {
 
     private static App app;
 
