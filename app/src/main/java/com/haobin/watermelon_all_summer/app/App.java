@@ -1,8 +1,10 @@
 package com.haobin.watermelon_all_summer.app;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.support.multidex.MultiDex;
 
 import com.haobin.watermelon_all_summer.http.NetProviderImpl;
 import com.lsh.packagelibrary.CasePackageApp;
@@ -38,9 +40,9 @@ public class App extends CasePackageApp {
     }
 
     /**
-     *  引入内存泄漏的检测
+     * 引入内存泄漏的检测
      */
-    private void initLeakCanary(){
+    private void initLeakCanary() {
         if (LeakCanary.isInAnalyzerProcess(this)) {
             return;
         }
@@ -55,5 +57,12 @@ public class App extends CasePackageApp {
         Configuration config = new Configuration();
         config.setToDefaults();
         res.updateConfiguration(config, res.getDisplayMetrics());
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        //因为引用的包过多，实现多包问题
+        MultiDex.install(this);
     }
 }
